@@ -1,0 +1,16 @@
+version: '3'
+services:
+  app:
+    build:
+      context: ./docker/golang
+      dockerfile: Dockerfile
+      args:
+        - VARIANT=1.16
+        - INSTALL_NODE=true
+        - NODE_VERSION=lts/*
+    volumes:
+      - ../:/go/github.com/MasatoTokuse/exectime
+    working_dir: /go/github.com/MasatoTokuse/exectime
+    tty: true
+    stdin_open: true
+    command: /bin/bash
